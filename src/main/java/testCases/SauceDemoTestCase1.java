@@ -67,19 +67,19 @@ public class SauceDemoTestCase1 {
         assertEquals("https://www.saucedemo.com/inventory.html", homepageLink, "Invalid login");
 
         //"PRODUCTS" header check:
-        WebElement productsHeader = driver.findElement(By.xpath("//span[contains(text(), 'Products')]"));
+        driver.findElement(By.xpath("//span[contains(text(), 'Products')]"));
 
 
         //shopping cart check:
-        WebElement shoppingCart = driver.findElement(By.id("shopping_cart_container"));
+        driver.findElement(By.id("shopping_cart_container"));
 
         //burger menu check:
         WebElement burgerMenu = driver.findElement(By.id("react-burger-menu-btn"));
 
         //socials links checks:
-        WebElement twitter = driver.findElement(By.className("social_twitter"));
-        WebElement facebook = driver.findElement(By.className("social_facebook"));
-        WebElement linkedin = driver.findElement(By.className("social_linkedin"));
+        driver.findElement(By.className("social_twitter"));
+        driver.findElement(By.className("social_facebook"));
+        driver.findElement(By.className("social_linkedin"));
 
         //logout
         WebElement logoutButton = driver.findElement(By.id("logout_sidebar_link"));
@@ -153,5 +153,36 @@ public class SauceDemoTestCase1 {
         assertEquals(rightPrice, price.getText());
 
         //- From product home page click "ADD TO CART" button for "Sauce Labs Fleece Jacket" item:
+        driver.navigate().back();
+        driver.findElement(By.xpath("//button[@id = 'add-to-cart-sauce-labs-backpack']")).click();
+
+        //- Click on the "Shopping Cart" button to open Shopping Cart page
+        driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
+
+        //- Click on the "Chechout" button to continue with order
+        driver.findElement(By.xpath("//button[@id = 'checkout']")).click();
+
+        //- Enter Firstname, Lastname, Zipcode and click on Finish button
+        String firstname = "Dusan";
+        String lastname = "Markovic";
+        String zipcode = "34000";
+
+        driver.findElement(By.xpath("//input[@id = 'first-name']")).sendKeys(firstname);
+        driver.findElement(By.xpath("//input[@id = 'last-name']")).sendKeys(lastname);
+        driver.findElement(By.xpath("//input[@id = 'postal-code']")).sendKeys(zipcode);
+
+        driver.findElement(By.xpath("//input[@id = 'continue']")).click();
+
+        driver.findElement(By.xpath("//button[@id = 'finish']")).click();
+
+
+        //- Verify "THANK YOU FOR YOUR ORDER" is displayed
+        String msg = driver.findElement(By.xpath("//h2[@class = 'complete-header']")).getText();
+        assertEquals("THANK YOU FOR YOUR ORDER", msg, "Wrong message. Checkout not completed");
+
+        //-Logout
+        driver.findElement(By.id("react-burger-menu-btn")).click();
+        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
+        driver.findElement(By.id("logout_sidebar_link")).click();
     }
 }
