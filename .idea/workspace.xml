@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Added .gitignore (again..)">
+    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Added Edge driver to the repo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCase1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCase1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/testCases/SauceDemoTestCase1.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +16,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/target/classes/testCases/SauceDemoTestCase1.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,10 +37,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "C:/Users/dmarkovic/Java/CT360-QA-Module",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.SauceDemoTestCases">
     <configuration name="SauceDemoTestCases" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TestCase1SauceDemo" />
       <extension name="coverage">
@@ -99,8 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SauceDemoTestCases.testCase2" />
         <item itemvalue="JUnit.SauceDemoTestCases" />
+        <item itemvalue="JUnit.SauceDemoTestCases.testCase2" />
         <item itemvalue="JUnit.SauceDemoTestCases.testCase1" />
       </list>
     </recent_temporary>
@@ -135,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661763931477</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Edge driver to the repo">
+      <created>1661764691793</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661764691793</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Edge driver to the repo">
+      <created>1661781087172</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661781087172</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +168,7 @@
     <MESSAGE value="Updated .gitignore file" />
     <MESSAGE value="Finished TestCase2 from the Week2 assignment" />
     <MESSAGE value="Added .gitignore (again..)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added .gitignore (again..)" />
+    <MESSAGE value="Added Edge driver to the repo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Edge driver to the repo" />
   </component>
 </project>

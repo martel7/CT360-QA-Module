@@ -59,8 +59,7 @@ public class SauceDemoTestCases {
         WebElement passwordField = driver.findElement(By.id("password"));
         passwordField.sendKeys(password);
 
-        WebElement submitButton = driver.findElement(By.id("login-button"));
-        submitButton.click();
+        driver.findElement(By.id("login-button")).click();
 
         //login check:
         String homepageLink = driver.getCurrentUrl();
@@ -184,5 +183,21 @@ public class SauceDemoTestCases {
         driver.findElement(By.id("react-burger-menu-btn")).click();
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
         driver.findElement(By.id("logout_sidebar_link")).click();
+    }
+
+    /*Login
+    * Get all the products in an array/list and add them all to the Cart
+    * Checkout
+    * Logout*/
+    @Test
+    public void testCase3(){
+
+        driver.get("https://www.saucedemo.com/");
+
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        driver.findElement(By.xpath("//input[@id = 'user-name']")).sendKeys(username);
+        driver.findElement(By.xpath("//input[@id = 'password']")).sendKeys(password);
     }
 }
