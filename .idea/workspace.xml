@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Added Edge driver to the repo">
+    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Made login and logout separate methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" afterDir="false" />
     </list>
@@ -42,7 +42,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.SauceDemoTestCases">
+  <component name="RunManager" selected="JUnit.SauceDemoTestCases.FilterTests">
     <configuration name="SauceDemoTestCases" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TestCase1SauceDemo" />
       <extension name="coverage">
@@ -61,7 +61,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SauceDemoTestCases.testCase1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SauceDemoTestCases.EmptyCartCheckoutTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TestCase1SauceDemo" />
       <extension name="coverage">
         <pattern>
@@ -69,17 +69,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="18" />
       <option name="PACKAGE_NAME" value="testCases" />
       <option name="MAIN_CLASS_NAME" value="testCases.SauceDemoTestCases" />
-      <option name="METHOD_NAME" value="testCase1" />
+      <option name="METHOD_NAME" value="EmptyCartCheckoutTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SauceDemoTestCases.testCase2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SauceDemoTestCases.Filter1Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TestCase1SauceDemo" />
       <extension name="coverage">
         <pattern>
@@ -87,17 +85,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="18" />
       <option name="PACKAGE_NAME" value="testCases" />
       <option name="MAIN_CLASS_NAME" value="testCases.SauceDemoTestCases" />
-      <option name="METHOD_NAME" value="testCase2" />
+      <option name="METHOD_NAME" value="Filter1Test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SauceDemoTestCases.testCase3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SauceDemoTestCases.FilterTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TestCase1SauceDemo" />
       <extension name="coverage">
         <pattern>
@@ -107,7 +103,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="testCases" />
       <option name="MAIN_CLASS_NAME" value="testCases.SauceDemoTestCases" />
-      <option name="METHOD_NAME" value="testCase3" />
+      <option name="METHOD_NAME" value="FilterTests" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SauceDemoTestCases.TestCase2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TestCase1SauceDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testCases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testCases" />
+      <option name="MAIN_CLASS_NAME" value="testCases.SauceDemoTestCases" />
+      <option name="METHOD_NAME" value="TestCase2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -115,10 +127,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SauceDemoTestCases.FilterTests" />
+        <item itemvalue="JUnit.SauceDemoTestCases.Filter1Test" />
+        <item itemvalue="JUnit.SauceDemoTestCases.EmptyCartCheckoutTest" />
+        <item itemvalue="JUnit.SauceDemoTestCases.TestCase2" />
         <item itemvalue="JUnit.SauceDemoTestCases" />
-        <item itemvalue="JUnit.SauceDemoTestCases.testCase1" />
-        <item itemvalue="JUnit.SauceDemoTestCases.testCase3" />
-        <item itemvalue="JUnit.SauceDemoTestCases.testCase2" />
       </list>
     </recent_temporary>
   </component>
@@ -166,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661781087172</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made login and logout separate methods">
+      <created>1661863362450</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1661863362450</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +205,7 @@
     <MESSAGE value="Finished TestCase2 from the Week2 assignment" />
     <MESSAGE value="Added .gitignore (again..)" />
     <MESSAGE value="Added Edge driver to the repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Edge driver to the repo" />
+    <MESSAGE value="Made login and logout separate methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made login and logout separate methods" />
   </component>
 </project>

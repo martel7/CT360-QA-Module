@@ -1,15 +1,15 @@
 package testCases;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import dev.failsafe.internal.util.Assert;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +27,7 @@ public class SauceDemoTestCases {
     @BeforeEach
     public void createDriver(){
         driver = new EdgeDriver();
+        driver.get("https://www.saucedemo.com/");
     }
 
     @AfterEach
@@ -39,11 +40,8 @@ public class SauceDemoTestCases {
         String username = "standard_user";
         String password = "secret_sauce";
 
-        WebElement usernameField = driver.findElement(By.id("user-name"));
-        usernameField.sendKeys(username);
-
-        WebElement passwordField = driver.findElement(By.id("password"));
-        passwordField.sendKeys(password);
+        driver.findElement(By.id("user-name")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
 
         driver.findElement(By.id("login-button")).click();
 
@@ -59,6 +57,33 @@ public class SauceDemoTestCases {
         driver.findElement(By.id("logout_sidebar_link")).click();
     }
 
+    private void checkout(){
+
+        //- Click on the "Shopping Cart" button to open Shopping Cart page
+        driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
+
+        //- Click on the "Chechout" button to continue with order
+        driver.findElement(By.xpath("//button[@id = 'checkout']")).click();
+
+        //- Enter Firstname, Lastname, Zipcode and click on Finish button
+        String firstname = "Dusan";
+        String lastname = "Markovic";
+        String zipcode = "34000";
+
+        driver.findElement(By.xpath("//input[@id = 'first-name']")).sendKeys(firstname);
+        driver.findElement(By.xpath("//input[@id = 'last-name']")).sendKeys(lastname);
+        driver.findElement(By.xpath("//input[@id = 'postal-code']")).sendKeys(zipcode);
+
+        driver.findElement(By.xpath("//input[@id = 'continue']")).click();
+
+        driver.findElement(By.xpath("//button[@id = 'finish']")).click();
+
+
+        //- Verify "THANK YOU FOR YOUR ORDER" is displayed
+        String msg = driver.findElement(By.xpath("//h2[@class = 'complete-header']")).getText();
+        assertEquals("THANK YOU FOR YOUR ORDER", msg, "Wrong message. Checkout not completed");
+    }
+
     /*
     Test case 1 from the assignment:
         - open url https://www.saucedemo.com/
@@ -71,11 +96,9 @@ public class SauceDemoTestCases {
         - Logout
     */
     @Test
-    public void testCase1() {
+    public void TestCase1() {
 
-        driver.get("https://www.saucedemo.com/");
-
-        standarUserLogin();
+        this.standarUserLogin();
 
         //"PRODUCTS" header check:
         driver.findElement(By.xpath("//span[contains(text(), 'Products')]"));
@@ -113,11 +136,9 @@ public class SauceDemoTestCases {
     */
 
     @Test
-    public void testCase2() {
+    public void TestCase2() {
 
-        driver.get("https://www.saucedemo.com/");
-
-        standarUserLogin();
+        this.standarUserLogin();
 
         //checking whether image of the item exits (Image is also clickable and leads to item page)
         WebElement backpackImg = driver.findElement(By.xpath("//img[contains(@alt, 'Sauce Labs Backpack')]"));
@@ -150,29 +171,8 @@ public class SauceDemoTestCases {
         driver.navigate().back();
         driver.findElement(By.xpath("//button[@id = 'add-to-cart-sauce-labs-backpack']")).click();
 
-        //- Click on the "Shopping Cart" button to open Shopping Cart page
-        driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
-
-        //- Click on the "Chechout" button to continue with order
-        driver.findElement(By.xpath("//button[@id = 'checkout']")).click();
-
-        //- Enter Firstname, Lastname, Zipcode and click on Finish button
-        String firstname = "Dusan";
-        String lastname = "Markovic";
-        String zipcode = "34000";
-
-        driver.findElement(By.xpath("//input[@id = 'first-name']")).sendKeys(firstname);
-        driver.findElement(By.xpath("//input[@id = 'last-name']")).sendKeys(lastname);
-        driver.findElement(By.xpath("//input[@id = 'postal-code']")).sendKeys(zipcode);
-
-        driver.findElement(By.xpath("//input[@id = 'continue']")).click();
-
-        driver.findElement(By.xpath("//button[@id = 'finish']")).click();
-
-
-        //- Verify "THANK YOU FOR YOUR ORDER" is displayed
-        String msg = driver.findElement(By.xpath("//h2[@class = 'complete-header']")).getText();
-        assertEquals("THANK YOU FOR YOUR ORDER", msg, "Wrong message. Checkout not completed");
+        //Checkout
+        this.checkout();
 
         //-Logout
         this.logout();
@@ -183,12 +183,10 @@ public class SauceDemoTestCases {
     * Remove them all from cart
     * Logout*/
     @Test
-    public void testCase3(){
-
-        driver.get("https://www.saucedemo.com/");
+    public void AddAllItemsToCartAndDeleteThem(){
 
         //Login:
-        standarUserLogin();
+        this.standarUserLogin();
 
         //Get all the products in an array/list and add them all to the Cart
         List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
@@ -205,5 +203,44 @@ public class SauceDemoTestCases {
 
         //Logout
         this.logout();
+    }
+
+    @Test
+    public void EmptyCartCheckoutTest(){
+
+        this.standarUserLogin();
+        this.checkout();
+
+        Assertions.fail("The site is allowing to checkout with an empty cart");
+    }
+
+    @Test
+    public void FilterTests() throws InterruptedException {
+
+        this.standarUserLogin();
+
+
+        /*WebElement filterMenu = driver.findElement(By.xpath("//select[@data-test = 'product_sort_container']"));
+        Select filters = new Select(filterMenu);
+
+        filters.selectByIndex(0);
+
+        filters.selectByIndex(1);
+
+        filters.selectByIndex(2); ------------> Not working ????
+
+        filters.selectByIndex(3); ------------> Not working ????
+
+        WebElement x = driver.findElement(By.xpath("//select[@class = 'product_sort_container']"));*/
+
+        List<WebElement> allProducts;
+        List<String> allProductNames = Collections.<String>emptyList();
+
+        //Checking A-Z
+        driver.findElement(By.xpath("//option[@value = 'az']")).click();
+        allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_name']"));
+        /*for(WebElement x : allProducts)
+            System.out.println(x.getText());*/
+
     }
 }
