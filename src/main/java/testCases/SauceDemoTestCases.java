@@ -9,11 +9,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import helpers.helperClass;
 
 public class SauceDemoTestCases {
 
@@ -196,7 +199,7 @@ public class SauceDemoTestCases {
         //Remove them all from cart
         //Navigate to cart firstly:
         driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
-        //wait maybe
+        //wait maybe?
         allProducts = driver.findElements(By.xpath("//div[@class = 'item_pricebar']/button[text() = 'Remove']"));
         for (WebElement product : allProducts)
             product.click();
@@ -234,13 +237,30 @@ public class SauceDemoTestCases {
         WebElement x = driver.findElement(By.xpath("//select[@class = 'product_sort_container']"));*/
 
         List<WebElement> allProducts;
-        List<String> allProductNames = Collections.<String>emptyList();
 
         //Checking A-Z
         driver.findElement(By.xpath("//option[@value = 'az']")).click();
         allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_name']"));
-        /*for(WebElement x : allProducts)
-            System.out.println(x.getText());*/
+        if(helperClass.isSortedAlphanum(allProducts, "a-z") == false)
+            Assertions.fail("Items not sorted correctly: a-z");
+
+        //Checking Z-A
+        driver.findElement(By.xpath("//option[@value = 'za']")).click();
+        allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_name']"));
+        if(helperClass.isSortedAlphanum(allProducts, "z-a") == false)
+            Assertions.fail("Items not sorted correctly: z-a");
+
+        //Checking Price low to high
+        driver.findElement(By.xpath("//option[@value = 'lohi']")).click();
+        allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_price']"));
+        if(helperClass.isSortedNum(allProducts, "l-h") == false)
+            Assertions.fail("Items not sorted correctly: low to high");
+
+        //Checking Price high to low
+        driver.findElement(By.xpath("//option[@value = 'hilo']")).click();
+        allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_price']"));
+        if(helperClass.isSortedNum(allProducts, "h-l") == false)
+            Assertions.fail("Items not sorted correctly: high to low");
 
     }
 }

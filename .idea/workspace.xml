@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Made login and logout separate methods">
+    <list default="true" id="8453d7ac-3d8e-44df-a59a-23d2d69c091b" name="Changes" comment="Started working on the Filters test cases">
+      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/helperClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/testCases/SauceDemoTestCases.java" afterDir="false" />
     </list>
@@ -12,6 +13,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -128,8 +136,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SauceDemoTestCases.FilterTests" />
-        <item itemvalue="JUnit.SauceDemoTestCases.Filter1Test" />
         <item itemvalue="JUnit.SauceDemoTestCases.EmptyCartCheckoutTest" />
+        <item itemvalue="JUnit.SauceDemoTestCases.Filter1Test" />
         <item itemvalue="JUnit.SauceDemoTestCases.TestCase2" />
         <item itemvalue="JUnit.SauceDemoTestCases" />
       </list>
@@ -186,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661863362450</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started working on the Filters test cases">
+      <created>1661869737358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1661869737358</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +221,7 @@
     <MESSAGE value="Added .gitignore (again..)" />
     <MESSAGE value="Added Edge driver to the repo" />
     <MESSAGE value="Made login and logout separate methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made login and logout separate methods" />
+    <MESSAGE value="Started working on the Filters test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on the Filters test cases" />
   </component>
 </project>
