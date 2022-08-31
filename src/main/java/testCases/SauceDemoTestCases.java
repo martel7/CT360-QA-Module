@@ -87,6 +87,15 @@ public class SauceDemoTestCases {
         assertEquals("THANK YOU FOR YOUR ORDER", msg, "Wrong message. Checkout not completed");
     }
 
+    private int addAllItemsToCart(){
+
+        //Get all the products in an array/list and add them all to the Cart
+        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
+        for (WebElement product : allProducts)
+            product.click();
+
+        return allProducts.size();
+    }
     /*
     Test case 1 from the assignment:
         - open url https://www.saucedemo.com/
@@ -191,16 +200,13 @@ public class SauceDemoTestCases {
         //Login:
         this.standarUserLogin();
 
-        //Get all the products in an array/list and add them all to the Cart
-        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
-        for (WebElement product : allProducts)
-            product.click();
+        this.addAllItemsToCart();
 
         //Remove them all from cart
         //Navigate to cart firstly:
         driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
         //wait maybe?
-        allProducts = driver.findElements(By.xpath("//div[@class = 'item_pricebar']/button[text() = 'Remove']"));
+        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'item_pricebar']/button[text() = 'Remove']"));
         for (WebElement product : allProducts)
             product.click();
 
@@ -208,6 +214,7 @@ public class SauceDemoTestCases {
         this.logout();
     }
 
+    /*Checking whether the user can checkout with an empy cart.*/
     @Test
     public void EmptyCartCheckoutTest(){
 
@@ -217,6 +224,7 @@ public class SauceDemoTestCases {
         Assertions.fail("The site is allowing to checkout with an empty cart");
     }
 
+    /*Testing whether the filters are sorting the items correctly*/
     @Test
     public void FilterTests() throws InterruptedException {
 
@@ -263,23 +271,40 @@ public class SauceDemoTestCases {
             Assertions.fail("Items not sorted correctly: high to low");
     }
 
+    /*Checking if REMOVE button on the home screen works for removing the items from cart*/
     @Test
     public void removeButtonHomePage(){
 
         //Login
         this.standarUserLogin();
 
-        //Get all the products in an array/list and add them all to the Cart
-        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
-        for (WebElement product : allProducts)
-            product.click();
+        this.addAllItemsToCart();
 
         //Removing all the items from cart from home page using REMOVE button
-        allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
+        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
         for (WebElement product : allProducts)
             product.click();
 
         //Logout
         this.logout();
+    }
+
+    /*Checking whether the cart stays filled with items when a user logs out and then logs back in*/
+    @Test
+    public void logoutThenLoginCartCheck(){
+
+        this.standarUserLogin();
+
+        int numberOfAddedItems = this.addAllItemsToCart();
+
+        this.logout();
+
+        this.standarUserLogin();
+
+        driver.findElement(By.xpath("//a[contains(@class, 'shopping_cart_link')]")).click();
+
+        int numberOfItemsInCart = driver.findElements(By.xpath("//div[@class = 'cart_item']")).size();
+
+        assertEquals(numberOfAddedItems, numberOfItemsInCart, "Number of added items and items in cart does not match.");
     }
 }
