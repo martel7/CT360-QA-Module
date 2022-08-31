@@ -261,6 +261,25 @@ public class SauceDemoTestCases {
         allProducts = driver.findElements(By.xpath("//div[@class = 'inventory_item_price']"));
         if(helperClass.isSortedNum(allProducts, "h-l") == false)
             Assertions.fail("Items not sorted correctly: high to low");
+    }
 
+    @Test
+    public void removeButtonHomePage(){
+
+        //Login
+        this.standarUserLogin();
+
+        //Get all the products in an array/list and add them all to the Cart
+        List<WebElement> allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
+        for (WebElement product : allProducts)
+            product.click();
+
+        //Removing all the items from cart from home page using REMOVE button
+        allProducts = driver.findElements(By.xpath("//div[@class = 'pricebar']/button"));
+        for (WebElement product : allProducts)
+            product.click();
+
+        //Logout
+        this.logout();
     }
 }
